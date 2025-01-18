@@ -1,0 +1,10 @@
+CREATE DATABASE hacker_news;
+USE hacker_news;
+
+CREATE TABLE stories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    url VARCHAR(255) NOT NULL,
+    time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY (url)
+);
