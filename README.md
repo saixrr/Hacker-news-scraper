@@ -2,28 +2,40 @@
 This project is a Node.js service that scrapes real-time data from Hacker News and streams it to connected clients via WebSocket. The scraped data is stored in a MySQL database, and the latest stories published in the last 5 minutes are sent to clients on their initial connection.
 
 **Prerequisites**
+
 Ensure you have the following installed:
 
 Node.js (version 14.x or higher): Download Node.js
+
 MySQL (for data storage)
+
 NPM or Yarn (for package management): Install NPM
+
 Git (for cloning the repository)
 
 **Setup**
+
 Clone the Repository
 
 git clone https://github.com/saixrr/Hacker-news-scraper.git
+
 cd <repo_name>
 
 
 **Backend Setup**
+
 npm install
+
 Start the backend:
+
 npm start
+
 The backend will start running on port 5002.
 
 **Frontend Setup:**
+
 Navigate to the frontend directory:
+
 cd frontend
 Install dependencies:
 npm install
