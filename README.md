@@ -37,30 +37,45 @@ The backend will start running on port 5002.
 Navigate to the frontend directory:
 
 cd frontend
+
 Install dependencies:
+
 npm install
+
 Start the frontend:
+
 npm start
+
 The frontend will start running on port 3000.
 
 Note: If you choose to use a different port, update the origin in server.js to avoid CORS errors.
+
 Database Setup
 Define your database credentials in a .env file at the root of the project:
 
 DB_HOST=127.0.0.1
+
 DB_USER=root
+
 DB_PASS=your_mysql_password
+
 DB_NAME=hacker_news
 
 Create the database and tables by executing the init.sql file:
+
 Navigate to the folder containing the init.sql file.
+
 Run the following command:
+
 mysql -u root -p < init.sql
+
 Note: Ensure MySQL is installed and running, and that you have set a root password.
 
 Starting MySQL Services
+
 On Mac:
 brew services start mysql
+
 On Windows:
 mysqld --console
 
@@ -68,7 +83,9 @@ mysqld --console
 The WebSocket provides real-time updates of new stories from Hacker News. Upon connection:
 
 It sends the stories published in the last 5 minutes.
+
 It broadcasts any new stories that are scraped periodically.
+
 Client-Side Usage: Here's an example of how to connect to the WebSocket using JavaScript:
 
 const socket = new WebSocket('ws://localhost:5002');
@@ -100,10 +117,12 @@ socket.onerror = (error) => {
 
 REST API Example:
 The REST API allows clients to fetch stories manually.
+
 Endpoint: GET /getstories
 
 Example Request:
 curl http://localhost:5002/getstories
+
 Example Response:
 
 [
@@ -122,6 +141,7 @@ Example Response:
 ]
 
 Client-Side Fetch Example:
+
 fetch('http://localhost:5002/getstories')
   .then(response => response.json())
   .then(data => {
