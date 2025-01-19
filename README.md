@@ -1,58 +1,53 @@
-This Project is a node.js service which scrapes the real-time data from hacker News and streams them via websocket to connected clients. 
-It stores the scraped data in a MySQL database and sends the latest stories published in the last 5 minutes to clients on initial connection.
 
-**Prerequisites:** 
-Node.js (version 14.x or higher) : https://nodejs.org/en
+This project is a Node.js service that scrapes real-time data from Hacker News and streams it to connected clients via WebSocket. The scraped data is stored in a MySQL database, and the latest stories published in the last 5 minutes are sent to clients on their initial connection.
+
+**Prerequisites**
+Ensure you have the following installed:
+
+Node.js (version 14.x or higher): Download Node.js
 MySQL (for data storage)
-NPM or Yarn (for package management): https://www.geeksforgeeks.org/how-to-download-and-install-node-js-and-npm/
+NPM or Yarn (for package management): Install NPM
 Git (for cloning the repository)
 
+**Setup**
+Clone the Repository
 
-**SETUP:**
 git clone https://github.com/saixrr/Hacker-news-scraper.git
 cd <repo_name>
 
-Backend setup:
-npm i
+
+**Backend Setup**
+npm install
+Start the backend:
 npm start
+The backend will start running on port 5002.
 
-backend starts running in the port 5002
-
-frontend setup:
+**Frontend Setup:**
+Navigate to the frontend directory:
 cd frontend
-npm i
+Install dependencies:
+npm install
+Start the frontend:
 npm start
+The frontend will start running on port 3000.
 
-frontend starts running in port 3000(Note: change the origin in server.js if you want to use other port to not get cors error)
+Note: If you choose to use a different port, update the origin in server.js to avoid CORS errors.
+Database Setup
+Define your database credentials in a .env file at the root of the project:
 
-
-**DATABASE SETUP:**
-define your credntials in .env file like below:
 DB_HOST=127.0.0.1
-
 DB_USER=root
-DB_PASS=******
+DB_PASS=your_mysql_password
 DB_NAME=hacker_news
 
-**To create database execute init.sql file**
-navigate to folder which holds init.sql and execute
+Create the database and tables by executing the init.sql file:
+Navigate to the folder containing the init.sql file.
+Run the following command:
 mysql -u root -p < init.sql
-Note: make sure mysql is installed and password is set 
-do not forget to start my sql service 
+Note: Ensure MySQL is installed and running, and that you have set a root password.
 
-In Mac:
+Starting MySQL Services
+On Mac:
 brew services start mysql
-
-In windows:
+On Windows:
 mysqld --console
-
-
-
-
-
-
-
-
-
-
-
