@@ -1,6 +1,5 @@
 const axios = require('axios');
-const { format } = require('date-fns'); // Use date-fns for formatting
-
+const { format } = require('date-fns');
 
 
 async function fetchStories(latestTimestamp) {
@@ -8,13 +7,10 @@ async function fetchStories(latestTimestamp) {
         const storyIdsResponse = await axios.get('https://hacker-news.firebaseio.com/v0/newstories.json');
         const allStoryIds = storyIdsResponse.data;
         const latestTimestampInSeconds = Math.floor(Date.parse(latestTimestamp) / 1000);
-
         const storyPromises = allStoryIds.map(async (id) => {
             try {
                 const storyResponse = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
                 const storyData = storyResponse.data;
-                
-
                 // Only fetch stories with a timestamp greater than the latestTimestamp
                 if (storyData.time > latestTimestampInSeconds) {
                     return {
@@ -25,7 +21,6 @@ async function fetchStories(latestTimestamp) {
                     };
                     return("new story",storyData)
                 }
-
                 return null;
             } catch (error) {
                 console.error(`Error fetching story with ID: ${id}`, error);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5002'; // Update with your backend server URL
+const API_BASE_URL = 'http://localhost:5002'; //update with your backend server URL(if you changed it)
 
 export const fetchStories = async () => {
   try {

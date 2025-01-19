@@ -11,17 +11,13 @@ const pool = mysql.createPool({
 async function saveStories(stories) {
     const connection = await pool.getConnection();
     try {
-        if (stories.length === 0) return; // Skip if no stories to save
-
-        // Prepare the values for batch insertion
+        if (stories.length === 0) return; 
         const values = stories.map(({ id, title, url, time }) => [
             id, 
             title || 'No title available', 
             url || 'No URL available', 
-            new Date(time * 1000), // Convert epoch time to JavaScript Date
+            new Date(time * 1000), 
         ]);
-
-        // Insert stories in a single query with ON DUPLICATE KEY UPDATE
         const query = `
             INSERT INTO stories (id, title, url, time)
             VALUES ?

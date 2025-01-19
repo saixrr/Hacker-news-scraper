@@ -51,3 +51,70 @@ On Mac:
 brew services start mysql
 On Windows:
 mysqld --console
+
+
+The WebSocket provides real-time updates of new stories from Hacker News. Upon connection:
+
+It sends the stories published in the last 5 minutes.
+It broadcasts any new stories that are scraped periodically.
+Client-Side Usage: Here's an example of how to connect to the WebSocket using JavaScript:
+
+const socket = new WebSocket('ws://localhost:5002');
+
+socket.onopen = () => {
+  console.log('WebSocket connection established');
+};
+
+socket.onmessage = (event) => {
+  const message = JSON.parse(event.data);
+  
+  if (message.type === 'INITIAL_STORIES') {
+    console.log('Stories from the last 5 minutes:', message.stories);
+  }
+
+  if (message.type === 'NEW_STORIES') {
+    console.log('New stories:', message.stories);
+  }
+};
+
+socket.onclose = () => {
+  console.log('WebSocket connection closed');
+};
+
+socket.onerror = (error) => {
+  console.error('WebSocket error:', error);
+};
+
+
+REST API Example:
+The REST API allows clients to fetch stories manually.
+Endpoint: GET /getstories
+
+Example Request:
+curl http://localhost:5002/getstories
+Example Response:
+
+[
+  {
+    "id": 42756734,
+    "title": "Trump launched an election memecoin [video]",
+    "url": "https://www.youtube.com/watch?v=8zjBj194el8",
+    "time": 1737292960
+  },
+  {
+    "id": 42756724,
+    "title": "Coinbase added the official Trump token in Solana",
+    "url": "https://www.coinbase.com/blog/increasing-transparency-for-new-asset-listings-on-coinbase",
+    "time": "2025-01-19T13:20:46.000Z"
+  }
+]
+
+Client-Side Fetch Example:
+fetch('http://localhost:5002/getstories')
+  .then(response => response.json())
+  .then(data => {
+    console.log('Fetched stories:', data);
+  })
+  .catch(error => {
+    console.error('Error fetching stories:', error);
+  });
