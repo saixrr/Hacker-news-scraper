@@ -35,8 +35,6 @@ wss.on('connection', async (ws) => {
 setInterval(async () => {
     try {
         const newStories = await fetchStories(latestTimestamp); 
-        
-        console.log("new stories",newStories)
 
         if (newStories.length > 0) {
             await saveStories(newStories);  //save to database

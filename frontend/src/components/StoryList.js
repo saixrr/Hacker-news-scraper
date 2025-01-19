@@ -5,7 +5,7 @@ const StoryList = () => {
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null); 
-  console.log(stories)
+
 
   useEffect(() => {
     let socket;
