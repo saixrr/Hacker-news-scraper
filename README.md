@@ -118,3 +118,9 @@ fetch('http://localhost:5002/getstories')
   .catch(error => {
     console.error('Error fetching stories:', error);
   });
+
+
+
+**  SCREENSHOTS:**
+
+![image](https://github.com/user-attachments/assets/043c206b-7625-4b0c-9338-f993f586b34c)
